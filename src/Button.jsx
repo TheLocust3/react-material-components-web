@@ -2,6 +2,8 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { button, autoInit } from 'material-components-web';
+
 const VARIANTS = { flat: '', raised: 'mdc-button--raised' }
 const COLORS = { default: '', primary: 'mdc-button--primary', accent: 'mdc-button--accent' }
 const SIZE = { default: '', compact: 'mdc-button--compact', dense: 'mdc-button--dense', small: 'mdc-button--compact mdc-button--dense' }
@@ -12,11 +14,15 @@ export class Button extends React.Component {
         super(props)
     }
 
+    componentDidMount() {
+        autoInit();
+    }
+
     render() {
         const { color, size, variant, disabled, ...reactProps } = this.props;
 
         return (
-            <button className={`mdc-button ${VARIANTS[variant]} ${COLORS[color]} ${SIZE[size]}`} disabled={disabled ? 'disabled' : ''}>
+            <button className={`mdc-button ${VARIANTS[variant]} ${COLORS[color]} ${SIZE[size]}`} disabled={disabled ? 'disabled' : ''} data-mdc-auto-init="MDCRipple">
               {this.props.children}
             </button>
         );
