@@ -10,10 +10,6 @@ const SIZE = { default: '', compact: 'mdc-button--compact', dense: 'mdc-button--
 
 export class Button extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount() {
         autoInit();
     }
@@ -22,7 +18,7 @@ export class Button extends React.Component {
         const { color, size, variant, disabled, ...reactProps } = this.props;
 
         return (
-            <button className={`mdc-button ${VARIANTS[variant]} ${COLORS[color]} ${SIZE[size]}`} disabled={disabled ? 'disabled' : ''} data-mdc-auto-init="MDCRipple">
+            <button className={`mdc-button ${VARIANTS[variant]} ${COLORS[color]} ${SIZE[size]}`} disabled={disabled ? 'disabled' : ''} data-mdc-auto-init="MDCRipple" {...reactProps}>
               {this.props.children}
             </button>
         );
