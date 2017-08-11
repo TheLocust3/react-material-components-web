@@ -7,7 +7,7 @@ import '@material/textfield/dist/mdc.textfield.css';
 export class TextField extends React.Component {
 
     render() {
-        const { disabled, value, label, helpText, persistentHelpText, onChange, ...reactProps } = this.props;
+        const { disabled, value, label, helpText, persistentHelpText, placeholderText, ...reactProps } = this.props;
 
         let disabledClass = disabled ? "mdc-textfield--disabled" : "";
         let valueClass = _.isEmpty(value) ? "" : "mdc-textfield__label--float-above";
@@ -20,8 +20,8 @@ export class TextField extends React.Component {
 
         return (
             <div>
-                <label className={`mdc-textfield ${disabledClass}`} {...reactProps} data-mdc-auto-init="MDCTextfield">
-                    <input type="text" className="mdc-textfield__input" onChange={onChange} {...inputProps}/>
+                <label className={`mdc-textfield ${disabledClass}`} data-mdc-auto-init="MDCTextfield">
+                    <input type="text" className="mdc-textfield__input" {...inputProps} {...reactProps}/>
                     <span className={`mdc-textfield__label ${valueClass}`}>{label}</span>
                 </label>
                 <p id="username-helptext" className={`mdc-textfield-helptext ${persistentHelpTextClass}`} aria-hidden="true">
@@ -38,7 +38,7 @@ TextField.propTypes = {
     label: PropTypes.string,
     helpText: PropTypes.string,
     persistentHelpText: PropTypes.bool,
-    onChange: PropTypes.func
+    placeholderText: PropTypes.string
 }
 
 TextField.defaultProps = {
@@ -47,5 +47,5 @@ TextField.defaultProps = {
     label: "",
     helpText: "",
     persistentHelpText: false,
-    onChange: (event) => {}
+    placeholderText: ""
 }

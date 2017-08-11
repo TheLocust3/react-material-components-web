@@ -7,28 +7,30 @@ import '@material/textfield/dist/mdc.textfield.css';
 export class TextArea extends React.Component {
 
     render() {
-        const { disabled, value, label, helpText, persistentHelpText, onChange, rows, cols, fullWidth, ...reactProps } = this.props;
+        const { disabled, value, label, helpText, persistentHelpText, rows, cols, fullWidth, ...reactProps } = this.props;
 
         let disabledClass = disabled ? "mdc-textfield--disabled" : "";
         let valueClass = _.isEmpty(value) ? "" : "mdc-textfield__label--float-above";
         let persistentHelpTextClass = persistentHelpText ? "mdc-textfield-helptext--persistent" : "";
 
         let fullWidthClass = fullWidth ? "mdc-textfield--fullwidth" : "";
+        let placeholderText = "";
+        let labelText = label;
         if (fullWidth && !_.isEmpty(label)) {
-            console.log("Text area cannot be full width with a label!")
-            return null
+            placeholderText = label;
+            labelText = "";
         }
 
-        let inputProps = {}
+        let inputProps = {};
         if (!_.isEmpty(value)) {
-            inputProps.value = value
+            inputProps.value = value;
         }
 
         return (
             <div>
-                <label className={`mdc-textfield mdc-textfield--multiline ${disabledClass} ${fullWidthClass}`} {...reactProps} data-mdc-auto-init="MDCTextfield">
-                    <textarea type="text" className="mdc-textfield__input" rows={rows} cols={cols} onChange={onChange} {...inputProps}/>
-                    <span className={`mdc-textfield__label ${valueClass}`}>{label}</span>
+                <label className={`mdc-textfield mdc-textfield--multiline ${disabledClass} ${fullWidthClass}`} data-mdc-auto-init="MDCTextfield">
+                    <textarea type="text" className="mdc-textfield__input" placeholder={placeholderText} rows={rows} cols={cols} {...inputProps} {...reactProps}/>
+                    <span className={`mdc-textfield__label ${valueClass}`}>{labelText}</span>
                 </label>
                 <p id="username-helptext" className={`mdc-textfield-helptext ${persistentHelpTextClass}`} aria-hidden="true">
                     {helpText}
@@ -44,7 +46,6 @@ TextArea.propTypes = {
     label: PropTypes.string,
     helpText: PropTypes.string,
     persistentHelpText: PropTypes.bool,
-    onChange: PropTypes.func,
     rows: PropTypes.number,
     cols: PropTypes.number,
     fullWidth: PropTypes.bool
@@ -56,7 +57,6 @@ TextArea.defaultProps = {
     label: "",
     helpText: "",
     persistentHelpText: false,
-    onChange: (event) => {},
     rows: 10,
     cols: 40,
     fullWidth: false
