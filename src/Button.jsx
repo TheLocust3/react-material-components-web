@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { button, autoInit } from 'material-components-web';
+import { autoInit } from 'material-components-web';
 
 const VARIANTS = { flat: '', raised: 'mdc-button--raised' }
 const COLORS = { default: '', primary: 'mdc-button--primary', accent: 'mdc-button--accent' }
