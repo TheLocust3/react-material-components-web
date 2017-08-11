@@ -1,10 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: __dirname + '/src/index.js',
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'react-material-components-web',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [

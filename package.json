@@ -2,7 +2,10 @@
   "name": "react-material-components-web",
   "version": "0.1.0",
   "description": "React components for Material Components Web",
-  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/bundle.js",
   "author": "Jake Kinsella <jake.kinsella@gmail.com> (https://jakekinsella.com)",
   "license": "MIT",
   "dependencies": {
