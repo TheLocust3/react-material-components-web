@@ -2,6 +2,8 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '@material/form-field/dist/mdc.form-field.css';
+
 const ALIGNMENT = { default: '', end: "mdc-form-field--align-end" }
 
 export class Form extends React.Component {

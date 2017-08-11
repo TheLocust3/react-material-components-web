@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { autoInit } from 'material-components-web';
+import '@material/button/dist/mdc.button.css';
 
 const VARIANTS = { flat: '', raised: 'mdc-button--raised' }
 const COLORS = { default: '', primary: 'mdc-button--primary', accent: 'mdc-button--accent' }

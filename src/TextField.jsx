@@ -2,6 +2,8 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '@material/textfield/dist/mdc.textfield.css';
+
 export class TextField extends React.Component {
 
     render() {
