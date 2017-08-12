@@ -3,9 +3,16 @@ Simple React wrappers for MCW components.
 
 ### To-do
 - More component wrappers
+- Support dark theme components
+- Support custom classes on components
+- Generate unique id
 - Tests
 - Publish to NPM
 - Material Component adapters instead of just wrapping
+
+### Issues
+- Checkbox labels aren't vertically centered
+  - Checkbox doesn't show grey circle on hover
 
 ### Skipped Components
 I'm skipping a few components that I don't think are widely used for now. I'll go back through and add them later
