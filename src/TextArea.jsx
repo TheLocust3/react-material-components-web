@@ -7,11 +7,11 @@ import '@material/textfield/dist/mdc.textfield.css';
 export class TextArea extends React.Component {
 
     render() {
-        const { disabled, value, label, helpText, persistentHelpText, rows, cols, fullWidth, ...reactProps } = this.props;
+        const { disabled, value, label, helpText, persistentHelp, fullWidth, ...reactProps } = this.props;
 
         let disabledClass = disabled ? "mdc-textfield--disabled" : "";
         let valueClass = _.isEmpty(value) ? "" : "mdc-textfield__label--float-above";
-        let persistentHelpTextClass = persistentHelpText ? "mdc-textfield-helptext--persistent" : "";
+        let persistentHelpClass = persistentHelp ? "mdc-textfield-helptext--persistent" : "";
 
         let fullWidthClass = fullWidth ? "mdc-textfield--fullwidth" : "";
         let placeholderText = "";
@@ -29,10 +29,10 @@ export class TextArea extends React.Component {
         return (
             <div>
                 <label className={`mdc-textfield mdc-textfield--multiline ${disabledClass} ${fullWidthClass}`} data-mdc-auto-init="MDCTextfield">
-                    <textarea type="text" className="mdc-textfield__input" placeholder={placeholderText} rows={rows} cols={cols} {...inputProps} {...reactProps}/>
+                    <textarea type="text" className="mdc-textfield__input" placeholder={placeholderText} {...inputProps} {...reactProps}/>
                     <span className={`mdc-textfield__label ${valueClass}`}>{labelText}</span>
                 </label>
-                <p id="username-helptext" className={`mdc-textfield-helptext ${persistentHelpTextClass}`} aria-hidden="true">
+                <p id="username-helptext" className={`mdc-textfield-helptext ${persistentHelpClass}`} aria-hidden="true">
                     {helpText}
                 </p>
             </div>
@@ -45,9 +45,7 @@ TextArea.propTypes = {
     value: PropTypes.string,
     label: PropTypes.string,
     helpText: PropTypes.string,
-    persistentHelpText: PropTypes.bool,
-    rows: PropTypes.number,
-    cols: PropTypes.number,
+    persistentHelp: PropTypes.bool,
     fullWidth: PropTypes.bool
 }
 
@@ -56,8 +54,6 @@ TextArea.defaultProps = {
     value: "",
     label: "",
     helpText: "",
-    persistentHelpText: false,
-    rows: 10,
-    cols: 40,
+    persistentHelp: false,
     fullWidth: false
 }

@@ -7,11 +7,19 @@ import '@material/textfield/dist/mdc.textfield.css';
 export class TextField extends React.Component {
 
     render() {
-        const { disabled, value, label, helpText, persistentHelpText, placeholderText, ...reactProps } = this.props;
+        const { disabled, value, label, helpText, persistentHelp, fullWidth, ...reactProps } = this.props;
 
         let disabledClass = disabled ? "mdc-textfield--disabled" : "";
         let valueClass = _.isEmpty(value) ? "" : "mdc-textfield__label--float-above";
-        let persistentHelpTextClass = persistentHelpText ? "mdc-textfield-helptext--persistent" : ""
+        let persistentHelpClass = persistentHelp ? "mdc-textfield-helptext--persistent" : ""
+
+        let fullWidthClass = fullWidth ? "mdc-textfield--fullwidth" : "";
+        let placeholderText = "";
+        let labelText = label;
+        if (fullWidth && !_.isEmpty(label)) {
+            placeholderText = label;
+            labelText = "";
+        }
 
         let inputProps = {}
         if (!_.isEmpty(value)) {
@@ -20,11 +28,11 @@ export class TextField extends React.Component {
 
         return (
             <div>
-                <label className={`mdc-textfield ${disabledClass}`} data-mdc-auto-init="MDCTextfield">
-                    <input type="text" className="mdc-textfield__input" {...inputProps} {...reactProps}/>
-                    <span className={`mdc-textfield__label ${valueClass}`}>{label}</span>
+                <label className={`mdc-textfield ${disabledClass} ${fullWidthClass}`} data-mdc-auto-init="MDCTextfield">
+                    <input type="text" className="mdc-textfield__input" placeholder={placeholderText} {...inputProps} {...reactProps}/>
+                    <span className={`mdc-textfield__label ${valueClass}`}>{labelText}</span>
                 </label>
-                <p id="username-helptext" className={`mdc-textfield-helptext ${persistentHelpTextClass}`} aria-hidden="true">
+                <p id="username-helptext" className={`mdc-textfield-helptext ${persistentHelpClass}`} aria-hidden="true">
                     {helpText}
                 </p>
             </div>
@@ -37,8 +45,8 @@ TextField.propTypes = {
     value: PropTypes.string,
     label: PropTypes.string,
     helpText: PropTypes.string,
-    persistentHelpText: PropTypes.bool,
-    placeholderText: PropTypes.string
+    persistentHelp: PropTypes.bool,
+    fullWidth: PropTypes.bool
 }
 
 TextField.defaultProps = {
@@ -46,6 +54,6 @@ TextField.defaultProps = {
     value: "",
     label: "",
     helpText: "",
-    persistentHelpText: false,
-    placeholderText: ""
+    persistentHelp: false,
+    fullWidth: false
 }
