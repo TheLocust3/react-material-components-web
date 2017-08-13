@@ -13,7 +13,7 @@ export class Radio extends React.Component {
 
         return (
             <div>
-                <div className={`mdc-radio ${disabledClass}`}>
+                <div className={`mdc-radio ${disabledClass}`} data-mdc-auto-init="MDCRadio">
                     <input className="mdc-radio__native-control" type="radio" {...reactProps} />
                     <div className="mdc-radio__background">
                         <div className="mdc-radio__outer-circle"></div>
