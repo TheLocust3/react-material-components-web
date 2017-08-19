@@ -16,10 +16,10 @@ export class Button extends React.Component {
     }
 
     render() {
-        const { color, size, variant, disabled, ...reactProps } = this.props;
+        const { color, size, variant, disabled, className, ...reactProps } = this.props;
 
         return (
-            <button className={`mdc-button ${VARIANTS[variant]} ${COLORS[color]} ${SIZE[size]}`} disabled={disabled ? 'disabled' : ''} data-mdc-auto-init="MDCRipple" {...reactProps}>
+            <button className={`mdc-button ${VARIANTS[variant]} ${COLORS[color]} ${SIZE[size]} ${className}`} disabled={disabled ? 'disabled' : ''} data-mdc-auto-init="MDCRipple" {...reactProps}>
               {this.props.children}
             </button>
         );
@@ -27,6 +27,7 @@ export class Button extends React.Component {
 }
 
 Button.propTypes = {
+    className: PropTypes.string,
     variant: PropTypes.string,
     color: PropTypes.string,
     size: PropTypes.string,
@@ -34,6 +35,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+    className: "",
     variant: 'flat',
     color: 'default',
     size: 'default',
