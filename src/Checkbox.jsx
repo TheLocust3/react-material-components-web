@@ -7,13 +7,13 @@ import '@material/checkbox/dist/mdc.checkbox.css';
 export class Checkbox extends React.Component {
 
     render() {
-        const { label, disabled, ...reactProps } = this.props;
+        const { className, label, disabled, ...reactProps } = this.props;
 
         let disabledClass = disabled ? "mdc-checkbox--disabled" : "";
 
         return (
             <div>
-                <div className={`mdc-checkbox ${disabledClass}`} data-mdc-auto-init="MDCCheckbox">
+                <div className={`mdc-checkbox ${disabledClass} ${className}`} data-mdc-auto-init="MDCCheckbox">
                     <input type="checkbox" className="mdc-checkbox__native-control" disabled={disabled} {...reactProps}/>
                     <div className="mdc-checkbox__background">
                         <svg className="mdc-checkbox__checkmark" viewBox="0 0 24 24">
@@ -29,11 +29,13 @@ export class Checkbox extends React.Component {
 }
 
 Checkbox.propTypes = {
+    className: PropTypes.string,
     label: PropTypes.string,
     disabled: PropTypes.bool
 }
 
 Checkbox.defaultProps = {
+    className: "",
     label: "",
     disabled: false
 }

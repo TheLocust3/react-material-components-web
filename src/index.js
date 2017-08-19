@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { autoInit } from 'material-components-web';
 
 import { Button } from './Button.jsx'
 import { Checkbox } from './Checkbox.jsx'
@@ -15,4 +16,9 @@ export {
     Radio,
     TextField,
     TextArea
+}
+
+window.onload = () => {
+    autoInit();
+    console.log("TEST")
 }

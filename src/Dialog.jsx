@@ -25,12 +25,12 @@ export class Dialog extends React.Component {
     }
 
     render() {
-        const { title, open, children, acceptText, cancelText, onAcceptClick, onCancelClick, ...reactProps } = this.props;
+        const { className, title, open, children, acceptText, cancelText, onAcceptClick, onCancelClick, ...reactProps } = this.props;
 
         let openClass = open ? "mdc-dialog--open" : ""
 
         return (
-            <aside className={`mdc-dialog ${openClass}`} role="alertdialog">
+            <aside className={`mdc-dialog ${openClass} ${className}`} role="alertdialog">
                 <div className="mdc-dialog__surface">
                     <header className="mdc-dialog__header">
                         <h2 className="mdc-dialog__header__title">
@@ -52,6 +52,7 @@ export class Dialog extends React.Component {
 }
 
 Dialog.propTypes = {
+    className: PropTypes.string,
     title: PropTypes.string,
     open: PropTypes.bool,
     acceptText: PropTypes.string,
@@ -61,6 +62,7 @@ Dialog.propTypes = {
 }
 
 Dialog.defaultProps = {
+    className: "",
     title: "",
     open: false,
     acceptText: "",

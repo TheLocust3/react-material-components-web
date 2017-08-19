@@ -11,12 +11,8 @@ const SIZE = { default: '', compact: 'mdc-button--compact', dense: 'mdc-button--
 
 export class Button extends React.Component {
 
-    componentDidMount() {
-        autoInit();
-    }
-
     render() {
-        const { color, size, variant, disabled, className, ...reactProps } = this.props;
+        const { className, color, size, variant, disabled, ...reactProps } = this.props;
 
         return (
             <button className={`mdc-button ${VARIANTS[variant]} ${COLORS[color]} ${SIZE[size]} ${className}`} disabled={disabled ? 'disabled' : ''} data-mdc-auto-init="MDCRipple" {...reactProps}>

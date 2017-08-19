@@ -7,7 +7,7 @@ import '@material/textfield/dist/mdc.textfield.css';
 export class TextField extends React.Component {
 
     render() {
-        const { disabled, value, label, helpText, persistentHelp, fullWidth, ...reactProps } = this.props;
+        const { className, disabled, value, label, helpText, persistentHelp, fullWidth, ...reactProps } = this.props;
 
         let disabledClass = disabled ? "mdc-textfield--disabled" : "";
         let valueClass = _.isEmpty(value) ? "" : "mdc-textfield__label--float-above";
@@ -28,7 +28,7 @@ export class TextField extends React.Component {
 
         return (
             <div>
-                <label className={`mdc-textfield ${disabledClass} ${fullWidthClass}`} data-mdc-auto-init="MDCTextfield">
+                <label className={`mdc-textfield ${disabledClass} ${fullWidthClass} ${className}`} data-mdc-auto-init="MDCTextfield">
                     <input type="text" className="mdc-textfield__input" placeholder={placeholderText} {...inputProps} {...reactProps}/>
                     <span className={`mdc-textfield__label ${valueClass}`}>{labelText}</span>
                 </label>
@@ -41,6 +41,7 @@ export class TextField extends React.Component {
 }
 
 TextField.propTypes = {
+    className: PropTypes.string,
     disabled: PropTypes.bool,
     value: PropTypes.string,
     label: PropTypes.string,
@@ -50,6 +51,7 @@ TextField.propTypes = {
 }
 
 TextField.defaultProps = {
+    className: "",
     disabled: false,
     value: "",
     label: "",
