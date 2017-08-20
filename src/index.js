@@ -8,6 +8,8 @@ import { Dialog } from './Dialog.jsx'
 import { Radio } from './Radio.jsx'
 import { TextField } from './TextField.jsx'
 import { TextArea } from './TextArea.jsx'
+import { Select } from './Select.jsx'
+import { Option } from './Option.jsx'
 
 export {
     Button,
@@ -15,10 +17,11 @@ export {
     Dialog,
     Radio,
     TextField,
-    TextArea
+    TextArea,
+    Select,
+    Option
 }
 
 window.onload = () => {
     autoInit();
-    console.log("TEST")
 }
