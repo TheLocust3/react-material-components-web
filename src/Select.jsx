@@ -6,8 +6,19 @@ import '@material/select/dist/mdc.select.css';
 
 export class Select extends React.Component {
 
+    /*componentDidMount() {
+        const select = new MDCSelect(document.querySelector('.mdc-select'));
+        select.listen('MDCSelect:change', () => {
+          this.props.onChange()
+        });
+    }*/
+
     render() {
-        const { className, text, disabled, children, ...reactProps } = this.props;
+        const { className, text, disabled, children, onChange, ...reactProps } = this.props;
+
+        const childrenWithProps = React.Children.map(this.props.children, (child, i) => {
+            return React.cloneElement(child, { onClick: onChange });
+        });
 
         return (
             <div>
@@ -15,7 +26,7 @@ export class Select extends React.Component {
                     <span className="mdc-select__selected-text">{text}</span>
                     <div className="mdc-simple-menu mdc-select__menu">
                         <ul className="mdc-list mdc-simple-menu__items">
-                            {this.props.children}
+                            {childrenWithProps}
                         </ul>
                     </div>
                 </div>
