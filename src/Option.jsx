@@ -10,7 +10,21 @@ export class Option extends React.Component {
         this.props.onClick(this.props.value)
     }
 
+    renderMultiple() {
+        const { className, value, disabled, children, onClick, ...reactProps } = this.props;
+
+        return (
+            <option className={`mdc-list-item ${className}`} value={value} onClick={this.onOptionClick.bind(this)} aria-disabled={disabled} {...reactProps}>
+                {children}
+            </option>
+        )
+    }
+
     render() {
+        if (this.props.multiple) {
+            return this.renderMultiple()
+        }
+
         const { className, value, disabled, children, onClick, ...reactProps } = this.props;
 
         return (
@@ -25,9 +39,11 @@ Option.propTypes = {
     className: PropTypes.string,
     value: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
+    multiple: PropTypes.bool
 }
 
 Option.defaultProps = {
     className: "",
-    disabled: false
+    disabled: false,
+    multiple: false
 }

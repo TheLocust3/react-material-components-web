@@ -4,7 +4,8 @@ Simple React wrappers for MCW components.
 ### To-do
 - More component wrappers
   - Indeterminate checkbox
-  - Dialog open animtation
+  - Dialog open animation
+  - Properly handle multi-select on change
 - Support dark theme components
 - Support custom classes on components
 - Generate unique id

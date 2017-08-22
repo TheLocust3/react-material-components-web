@@ -6,13 +6,6 @@ import '@material/select/dist/mdc.select.css';
 
 export class Select extends React.Component {
 
-    /*componentDidMount() {
-        const select = new MDCSelect(document.querySelector('.mdc-select'));
-        select.listen('MDCSelect:change', () => {
-          this.props.onChange()
-        });
-    }*/
-
     render() {
         const { className, text, disabled, children, onChange, ...reactProps } = this.props;
 
@@ -21,14 +14,12 @@ export class Select extends React.Component {
         });
 
         return (
-            <div>
-                <div className="mdc-select {className}" role="listbox" tabIndex="0" aria-disabled={disabled} {...reactProps} data-mdc-auto-init="MDCSelect">
-                    <span className="mdc-select__selected-text">{text}</span>
-                    <div className="mdc-simple-menu mdc-select__menu">
-                        <ul className="mdc-list mdc-simple-menu__items">
-                            {childrenWithProps}
-                        </ul>
-                    </div>
+            <div className="mdc-select {className}" role="listbox" tabIndex="0" aria-disabled={disabled} {...reactProps} data-mdc-auto-init="MDCSelect">
+                <span className="mdc-select__selected-text">{text}</span>
+                <div className="mdc-simple-menu mdc-select__menu">
+                    <ul className="mdc-list mdc-simple-menu__items">
+                        {childrenWithProps}
+                    </ul>
                 </div>
             </div>
         );
@@ -38,7 +29,7 @@ export class Select extends React.Component {
 Select.propTypes = {
     className: PropTypes.string,
     text: PropTypes.string,
-    disabled: PropTypes.bool,
+    disabled: PropTypes.bool
 }
 
 Select.defaultProps = {

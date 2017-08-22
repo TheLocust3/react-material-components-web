@@ -10,6 +10,9 @@ import { TextField } from './TextField.jsx'
 import { TextArea } from './TextArea.jsx'
 import { Select } from './Select.jsx'
 import { Option } from './Option.jsx'
+import { OptionDivider } from './OptionDivider.jsx'
+import { OptionGroup } from './OptionGroup.jsx'
+import { MultiSelect } from './MultiSelect.jsx'
 
 export {
     Button,
@@ -19,7 +22,10 @@ export {
     TextField,
     TextArea,
     Select,
-    Option
+    Option,
+    OptionDivider,
+    OptionGroup,
+    MultiSelect
 }
 
 window.onload = () => {
