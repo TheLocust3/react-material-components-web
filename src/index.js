@@ -13,6 +13,7 @@ import { Option } from './Option.jsx'
 import { OptionDivider } from './OptionDivider.jsx'
 import { OptionGroup } from './OptionGroup.jsx'
 import { MultiSelect } from './MultiSelect.jsx'
+import { Fab } from './Fab.jsx'
 
 export {
     Button,
@@ -25,7 +26,8 @@ export {
     Option,
     OptionDivider,
     OptionGroup,
-    MultiSelect
+    MultiSelect,
+    Fab
 }
 
 window.onload = () => {
