@@ -14,6 +14,7 @@ import { OptionDivider } from './OptionDivider.jsx'
 import { OptionGroup } from './OptionGroup.jsx'
 import { MultiSelect } from './MultiSelect.jsx'
 import { Fab } from './Fab.jsx'
+import { IconToggle } from './IconToggle.jsx'
 
 export {
     Button,
@@ -27,7 +28,8 @@ export {
     OptionDivider,
     OptionGroup,
     MultiSelect,
-    Fab
+    Fab,
+    IconToggle
 }
 
 window.onload = () => {
