@@ -15,14 +15,12 @@ export class IconToggle extends React.Component {
     onToggleClick(event) {
         if (this.props.disabled) return
 
-        console.log(this.state)
         let on = !this.state.on
         this.setState({ on: on })
 
+        this.setState({ currentIcon: this.props.iconOff })
         if (on) {
             this.setState({ currentIcon: this.props.iconOn })
-        } else {
-            this.setState({ currentIcon: this.props.iconOff })
         }
 
         this.props.onClick(on)
@@ -33,7 +31,7 @@ export class IconToggle extends React.Component {
 
         return (
             <i className="mdc-icon-toggle material-icons" role="button"
-                 disabled={disabled} onClick={this.onToggleClick.bind(this)} {...reactProps}>
+                 disabled={disabled} onClick={this.onToggleClick.bind(this)} data-mdc-auto-init="MDCIconToggle" {...reactProps}>
                 {this.state.currentIcon}
             </i>
         );
