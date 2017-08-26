@@ -14,6 +14,7 @@ import { OptionDivider } from './OptionDivider.jsx'
 import { OptionGroup } from './OptionGroup.jsx'
 import { MultiSelect } from './MultiSelect.jsx'
 import { Fab } from './Fab.jsx'
+import { Icon } from './Icon.jsx'
 import { IconToggle } from './IconToggle.jsx'
 
 export {
@@ -29,6 +30,7 @@ export {
     OptionGroup,
     MultiSelect,
     Fab,
+    Icon,
     IconToggle
 }
 

@@ -2,6 +2,8 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Icon } from './Icon.jsx'
+
 import '@material/icon-toggle/dist/mdc.icon-toggle.css';
 
 export class IconToggle extends React.Component {
@@ -27,13 +29,13 @@ export class IconToggle extends React.Component {
     }
 
     render() {
-        const { className, disabled, onClick, iconOn, iconOff, children, ...reactProps } = this.props;
+        const { className, disabled, onClick, iconOn, iconOff, ...reactProps } = this.props;
 
         return (
-            <i className="mdc-icon-toggle material-icons" role="button"
-                 disabled={disabled} onClick={this.onToggleClick.bind(this)} data-mdc-auto-init="MDCIconToggle" {...reactProps}>
-                {this.state.currentIcon}
-            </i>
+            <Icon className="mdc-icon-toggle material-icons" role="button"
+                disabled={disabled} onClick={this.onToggleClick.bind(this)} data-mdc-auto-init="MDCIconToggle"
+                icon={this.state.currentIcon} {...reactProps}
+            />
         );
     }
 }
