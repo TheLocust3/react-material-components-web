@@ -17,6 +17,7 @@ To use you must currently include:
 - Publish to NPM
 - Material Component adapters instead of just wrapping
 - Make sure user doesn't have to import stylesheets
+- Make sure there are no missing options for an components
 
 ### Issues
 - Checkbox labels aren't vertically centered

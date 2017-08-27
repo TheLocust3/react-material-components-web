@@ -16,6 +16,7 @@ import { MultiSelect } from './MultiSelect.jsx'
 import { Fab } from './Fab.jsx'
 import { Icon } from './Icon.jsx'
 import { IconToggle } from './IconToggle.jsx'
+import { ProgressBar } from './ProgressBar.jsx'
 
 export {
     Button,
@@ -31,7 +32,8 @@ export {
     MultiSelect,
     Fab,
     Icon,
-    IconToggle
+    IconToggle,
+    ProgressBar
 }
 
 window.onload = () => {
