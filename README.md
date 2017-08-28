@@ -8,8 +8,17 @@ To use you must currently include:
 ### To-do
 - More component wrappers
   - Indeterminate checkbox
-  - Dialog open animation
+  - Dialog and snackbar open animation
   - Properly handle multi-select on change
+  - Drawer
+  - Layout grid
+  - List
+  - Menu
+  - Slider
+  - Switch
+  - Tabs
+  - Toolbar
+  - Typography
 - Support dark theme components
 - Support custom classes on components
 - Generate unique id

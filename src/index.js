@@ -17,6 +17,7 @@ import { Fab } from './Fab.jsx'
 import { Icon } from './Icon.jsx'
 import { IconToggle } from './IconToggle.jsx'
 import { ProgressBar } from './ProgressBar.jsx'
+import { Snackbar } from './Snackbar.jsx'
 
 export {
     Button,
@@ -33,7 +34,8 @@ export {
     Fab,
     Icon,
     IconToggle,
-    ProgressBar
+    ProgressBar,
+    Snackbar
 }
 
 window.onload = () => {
