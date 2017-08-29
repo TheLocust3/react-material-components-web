@@ -18,6 +18,7 @@ import { Icon } from './Icon.jsx'
 import { IconToggle } from './IconToggle.jsx'
 import { ProgressBar } from './ProgressBar.jsx'
 import { Snackbar } from './Snackbar.jsx'
+import { Slider } from './Slider.jsx'
 
 export {
     Button,
@@ -35,7 +36,8 @@ export {
     Icon,
     IconToggle,
     ProgressBar,
-    Snackbar
+    Snackbar,
+    Slider
 }
 
 window.onload = () => {
