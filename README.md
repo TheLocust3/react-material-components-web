@@ -10,11 +10,11 @@ To use you must currently include:
   - Indeterminate checkbox
   - Dialog and snackbar open animation
   - Properly handle multi-select on change
+  - Slider default value
   - Drawer
   - Layout grid
   - List
   - Menu
-  - Slider
   - Switch
   - Tabs
   - Toolbar
