@@ -15,7 +15,6 @@ To use you must currently include:
   - Layout grid
   - List
   - Menu
-  - Switch
   - Tabs
   - Toolbar
   - Typography
