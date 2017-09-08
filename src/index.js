@@ -20,6 +20,8 @@ import { ProgressBar } from './ProgressBar.jsx'
 import { Snackbar } from './Snackbar.jsx'
 import { Slider } from './Slider.jsx'
 import { Switch } from './Switch.jsx'
+import { Toolbar } from './Toolbar.jsx'
+import { ToolbarSection } from './ToolbarSection.jsx'
 
 export {
     Button,
@@ -39,7 +41,9 @@ export {
     ProgressBar,
     Snackbar,
     Slider,
-    Switch
+    Switch,
+    Toolbar,
+    ToolbarSection
 }
 
 window.onload = () => {
