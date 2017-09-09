@@ -11,6 +11,7 @@ To use you must currently include:
   - Dialog and snackbar open animation
   - Properly handle multi-select on change
   - Slider default value
+  - Toolbar icons, fixed adjust, and ratio flexible
   - Drawer
   - Layout grid
   - List
