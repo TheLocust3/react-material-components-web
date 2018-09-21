@@ -1,19 +1,29 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDCRipple } from '@material/ripple';
 
-import '@material/fab/dist/mdc.fab.css';
+import { uuid } from './helpers';
 
-export class Fab extends React.Component {
+export default class Fab extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { uuid: `fab-${uuid()}` };
+    }
+
+    componentDidMount() {
+        MDCRipple.attachTo(document.querySelector(`#${this.state.uuid}`));
+    }
 
     render() {
-        const { className, mini, plain, disabled, children, ...reactProps } = this.props;
+        let { className, style, condensed, children, ...props } = this.props;
 
-        let miniClass = mini ? 'mdc-fab--mini' : '';
-        let plainClass = plain ? 'mdc-fab--plain' : '';
+        className = _.isEmpty(className) ? '' : className;
+        let fabMiniClassName = condensed ? 'mdc-fab--mini' : '';
 
         return (
-            <button className={`mdc-fab material-icons ${miniClass} ${plainClass} ${className}`} disabled={disabled} data-mdc-auto-init="MDCRipple" {...reactProps}>
+            <button id={this.state.uuid} className={`relative mdc-fab ${fabMiniClassName} ${className}`} {...props}>
                 {children}
             </button>
         );
@@ -22,14 +32,7 @@ export class Fab extends React.Component {
 
 Fab.propTypes = {
     className: PropTypes.string,
-    mini: PropTypes.bool,
-    plain: PropTypes.bool,
-    disabled: PropTypes.bool
-}
-
-Fab.defaultProps = {
-    className: "",
-    mini: false,
-    plain: false,
-    disabled: false
-}
+    style: PropTypes.object,
+    condensed: PropTypes.bool,
+    children: PropTypes.any.isRequired
+};

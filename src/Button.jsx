@@ -1,21 +1,30 @@
-import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDCRipple } from '@material/ripple';
 
-import '@material/button/dist/mdc.button.css';
+import { uuid } from './helpers';
 
-const VARIANTS = { flat: '', raised: 'mdc-button--raised' }
-const COLORS = { default: '', primary: 'mdc-button--primary', accent: 'mdc-button--accent' }
-const SIZE = { default: '', compact: 'mdc-button--compact', dense: 'mdc-button--dense', small: 'mdc-button--compact mdc-button--dense' }
+export default class Button extends React.Component {
+    constructor(props) {
+        super(props);
 
-export class Button extends React.Component {
+        this.state = { uuid: `button-${uuid()}` };
+    }
+
+    componentDidMount() {
+        MDCRipple.attachTo(document.querySelector(`#${this.state.uuid}`));
+    }
 
     render() {
-        const { className, color, size, variant, disabled, children, ...reactProps } = this.props;
+        let { className, style, flat, condensed, children, ...props } = this.props;
+
+        className = _.isEmpty(className) ? '' : className;
+        let buttonDenseClassName = condensed ? 'mdc-button--dense' : '';
+        let flatClassName = flat ? '' : 'mdc-button--raised';
 
         return (
-            <button className={`mdc-button ${VARIANTS[variant]} ${COLORS[color]} ${SIZE[size]} ${className}`} disabled={disabled ? 'disabled' : ''} data-mdc-auto-init="MDCRipple" {...reactProps}>
-              {children}
+            <button id={this.state.uuid} className={`mdc-button ${flatClassName} ${buttonDenseClassName} ${className}`} {...props}>
+                {children}
             </button>
         );
     }
@@ -23,16 +32,7 @@ export class Button extends React.Component {
 
 Button.propTypes = {
     className: PropTypes.string,
-    variant: PropTypes.string,
-    color: PropTypes.string,
-    size: PropTypes.string,
-    disabled: PropTypes.bool,
-}
-
-Button.defaultProps = {
-    className: "",
-    variant: 'flat',
-    color: 'default',
-    size: 'default',
-    disabled: false
-}
+    flat: PropTypes.bool,
+    condensed: PropTypes.bool,
+    children: PropTypes.any.isRequired
+};

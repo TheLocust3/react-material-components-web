@@ -1,61 +1,76 @@
-import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDCTextField } from '@material/textfield';
 
-import '@material/textfield/dist/mdc.textfield.css';
+import { uuid } from './helpers';
 
-export class TextArea extends React.Component {
+export default class TextField extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { defaultValue: props.defaultValue, uuid: `textfield-${uuid()}` };
+    }
+
+    componentDidMount() {
+        if (_.isEmpty(this.props.defaultValue)) return;
+
+        let textField = new MDCTextField(document.querySelector(`#${this.state.uuid}`));
+        textField.value = this.state.defaultValue;
+    }
+
+    componentDidUpdate() {
+        if (_.isEmpty(this.props.defaultValue)) return;
+
+        if (this.state.defaultValue != this.props.defaultValue) {
+            let textField = new MDCTextField(document.querySelector(`#${this.state.uuid}`));
+            textField.value = this.props.defaultValue;
+
+            this.setState({
+                defaultValue: this.props.defaultValue
+            });
+        }
+    }
 
     render() {
-        const { className, disabled, value, label, helpText, persistentHelp, fullWidth, ...reactProps } = this.props;
+        let { className, style, label, defaultValue, onChange, required, value, rows, cols, dense, ...props } = this.props;
 
-        let disabledClass = disabled ? "mdc-textfield--disabled" : "";
-        let valueClass = _.isEmpty(value) ? "" : "mdc-textfield__label--float-above";
-        let persistentHelpClass = persistentHelp ? "mdc-textfield-helptext--persistent" : "";
-
-        let fullWidthClass = fullWidth ? "mdc-textfield--fullwidth" : "";
-        let placeholderText = "";
-        let labelText = label;
-        if (fullWidth && !_.isEmpty(label)) {
-            placeholderText = label;
-            labelText = "";
-        }
-
-        let inputProps = {};
-        if (!_.isEmpty(value)) {
-            inputProps.value = value;
-        }
+        className = _.isEmpty(className) ? '' : className;
 
         return (
-            <div>
-                <label className={`mdc-textfield mdc-textfield--multiline ${disabledClass} ${fullWidthClass} ${className}`} data-mdc-auto-init="MDCTextfield">
-                    <textarea type="text" className="mdc-textfield__input" placeholder={placeholderText} {...inputProps} {...reactProps}/>
-                    <span className={`mdc-textfield__label ${valueClass}`}>{labelText}</span>
-                </label>
-                <p id="username-helptext" className={`mdc-textfield-helptext ${persistentHelpClass}`} aria-hidden="true">
-                    {helpText}
-                </p>
+            <div
+                id={this.state.uuid}
+                className={`mdc-text-field mdc-text-field--textarea textarea ${className}`}
+                data-mdc-auto-init="MDCTextField"
+                style={style}>
+                <textarea
+                    type="text"
+                    name={name}
+                    className="mdc-text-field__input mdc-typography--body2"
+                    onChange={onChange}
+                    value={value}
+                    rows={rows}
+                    cols={cols}
+                    required={required}
+                    {...props}
+                />
+
+                <label className="mdc-floating-label mdc-typography--body2">{label}</label>
+
+                <div className="mdc-line-ripple" />
             </div>
         );
     }
 }
 
-TextArea.propTypes = {
+TextField.propTypes = {
     className: PropTypes.string,
-    disabled: PropTypes.bool,
-    value: PropTypes.string,
+    style: PropTypes.object,
     label: PropTypes.string,
-    helpText: PropTypes.string,
-    persistentHelp: PropTypes.bool,
-    fullWidth: PropTypes.bool
-}
-
-TextArea.defaultProps = {
-    className: "",
-    disabled: false,
-    value: "",
-    label: "",
-    helpText: "",
-    persistentHelp: false,
-    fullWidth: false
-}
+    defaultValue: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    required: PropTypes.bool,
+    value: PropTypes.string,
+    rows: PropTypes.number,
+    cols: PropTypes.number,
+    dense: PropTypes.bool
+};

@@ -1,26 +1,56 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDCSelect } from '@material/select';
 
-import '@material/select/dist/mdc.select.css';
+import { uuid } from './helpers';
 
-export class Select extends React.Component {
+import Text from './Text';
+
+export default class Select extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { uuid: `select-${uuid()}` };
+    }
+
+    mdcInit() {
+        const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
+
+        if (this.props.selectedIndex != null) {
+            select.selectedIndex = this.props.selectedIndex;
+        }
+    }
+
+    componentDidMount() {
+        this.mdcInit();
+    }
+
+    componentDidUpdate() {
+        this.mdcInit();
+    }
 
     render() {
-        const { className, text, disabled, children, onChange, ...reactProps } = this.props;
-
-        const childrenWithProps = React.Children.map(this.props.children, (child, i) => {
-            return React.cloneElement(child, { onClick: onChange });
-        });
+        let { className, label, onChange, selectedIndex, required, disabled, children, ...props } = this.props;
+        className = _.isEmpty(className) ? '' : className;
 
         return (
-            <div className="mdc-select {className}" role="listbox" tabIndex="0" aria-disabled={disabled} {...reactProps} data-mdc-auto-init="MDCSelect">
-                <span className="mdc-select__selected-text">{text}</span>
-                <div className="mdc-simple-menu mdc-select__menu">
-                    <ul className="mdc-list mdc-simple-menu__items">
-                        {childrenWithProps}
-                    </ul>
-                </div>
+            <div className={`mdc-select ${className}`} id={this.state.uuid} role="listbox" data-mdc-auto-init="MDCSelect" {...props}>
+                <select
+                    onChange={(event) => {
+                        this.props.onChange(event.target);
+                    }}
+                    className="mdc-select__native-control mdc-typography--body2"
+                    required={required}
+                    disabled={disabled}>
+                    {children}
+                </select>
+
+                <label className="mdc-floating-label">
+                    <Text type="body2">{label}</Text>
+                </label>
+
+                <div className="mdc-line-ripple" />
             </div>
         );
     }
@@ -28,12 +58,10 @@ export class Select extends React.Component {
 
 Select.propTypes = {
     className: PropTypes.string,
-    text: PropTypes.string,
-    disabled: PropTypes.bool
-}
-
-Select.defaultProps = {
-    className: "",
-    text: "",
-    disabled: false
-}
+    label: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    selectedIndex: PropTypes.number,
+    required: PropTypes.bool,
+    disabled: PropTypes.bool,
+    children: PropTypes.any.isRequired
+};
