@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDCTextField } from '@material/textfield';
 
-import { uuid } from './helpers';
+import { uuid } from '../helpers';
 
 export default class TextField extends React.Component {
     constructor(props) {
@@ -32,29 +32,48 @@ export default class TextField extends React.Component {
     }
 
     render() {
-        let { className, style, label, defaultValue, onChange, required, value, rows, cols, dense, ...props } = this.props;
+        let {
+            className,
+            textFieldClassName,
+            labelClassName,
+            style,
+            label,
+            defaultValue,
+            onChange,
+            required,
+            value,
+            type,
+            size,
+            dense,
+            ...props
+        } = this.props;
 
         className = _.isEmpty(className) ? '' : className;
+        textFieldClassName = _.isEmpty(textFieldClassName) ? '' : textFieldClassName;
+        labelClassName = _.isEmpty(labelClassName) ? '' : labelClassName;
+        let denseClassName = dense ? 'mdc-text-field--dense' : '';
+
+        type = _.isEmpty(type) ? 'text' : type;
 
         return (
             <div
                 id={this.state.uuid}
-                className={`mdc-text-field mdc-text-field--textarea textarea ${className}`}
+                className={`mdc-text-field ${denseClassName} textfield ${className}`}
                 data-mdc-auto-init="MDCTextField"
                 style={style}>
-                <textarea
-                    type="text"
-                    name={name}
-                    className="mdc-text-field__input mdc-typography--body2"
+                <input
+                    type={type}
+                    id={`${this.state.uuid}--inner`}
+                    className={`mdc-text-field__input mdc-typography--body2 ${textFieldClassName}`}
                     onChange={onChange}
                     value={value}
-                    rows={rows}
-                    cols={cols}
+                    size={size}
                     required={required}
                     {...props}
                 />
-
-                <label className="mdc-floating-label mdc-typography--body2">{label}</label>
+                <label className={`mdc-floating-label mdc-typography--body2 ${labelClassName}`} htmlFor={`${this.state.uuid}--inner`}>
+                    {label}
+                </label>
 
                 <div className="mdc-line-ripple" />
             </div>
@@ -64,13 +83,15 @@ export default class TextField extends React.Component {
 
 TextField.propTypes = {
     className: PropTypes.string,
+    textFieldClassName: PropTypes.string,
+    labelClassName: PropTypes.string,
     style: PropTypes.object,
     label: PropTypes.string,
     defaultValue: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     required: PropTypes.bool,
     value: PropTypes.string,
-    rows: PropTypes.number,
-    cols: PropTypes.number,
+    type: PropTypes.string,
+    size: PropTypes.number,
     dense: PropTypes.bool
 };

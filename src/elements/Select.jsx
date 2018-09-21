@@ -5,7 +5,7 @@ import { MDCSelect } from '@material/select';
 
 import { uuid } from './helpers';
 
-import Text from './Text';
+import Text from '../Text';
 
 export default class Select extends React.Component {
     constructor(props) {

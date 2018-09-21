@@ -1,27 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { autoInit } from 'material-components-web';
-
-import { Button } from './Button.jsx'
-import { Checkbox } from './Checkbox.jsx'
-import { Dialog } from './Dialog.jsx'
-import { Radio } from './Radio.jsx'
-import { TextField } from './TextField.jsx'
-import { TextArea } from './TextArea.jsx'
-import { Select } from './Select.jsx'
-import { Option } from './Option.jsx'
-import { OptionDivider } from './OptionDivider.jsx'
-import { OptionGroup } from './OptionGroup.jsx'
-import { MultiSelect } from './MultiSelect.jsx'
-import { Fab } from './Fab.jsx'
-import { Icon } from './Icon.jsx'
-import { IconToggle } from './IconToggle.jsx'
-import { ProgressBar } from './ProgressBar.jsx'
-import { Snackbar } from './Snackbar.jsx'
-import { Slider } from './Slider.jsx'
-import { Switch } from './Switch.jsx'
-import { Toolbar } from './Toolbar.jsx'
-import { ToolbarSection } from './ToolbarSection.jsx'
+import Button from 'elements/Button.jsx';
+import Checkbox from 'elements/Checkbox.jsx';
+import TextField from 'elements/TextField.jsx';
+import TextArea from 'elements/TextArea.jsx';
+import Select from 'elements/Select.jsx';
+import Option from 'elements/SelectItem.jsx';
+import Fab from 'elements/Fab.jsx';
+import Text from 'elements/Text.jsx';
+import MDCAutoInit from 'elements/MDCAutoInit.jsx';
 
 export {
     Button,
@@ -44,8 +29,4 @@ export {
     Switch,
     Toolbar,
     ToolbarSection
-}
-
-window.onload = () => {
-    autoInit();
-}
+};

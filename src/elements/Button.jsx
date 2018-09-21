@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDCRipple } from '@material/ripple';
 
-import { uuid } from './helpers';
+import { uuid } from '../helpers';
 
 export default class Button extends React.Component {
     constructor(props) {
