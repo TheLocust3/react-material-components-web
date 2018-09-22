@@ -5,7 +5,7 @@
     "files": [
         "dist"
     ],
-    "main": "dist/bundle.js",
+    "main": "dist/index.js",
     "author": "Jake Kinsella <jake.kinsella@gmail.com> (https://jakekinsella.com)",
     "license": "MIT",
     "scripts": {
