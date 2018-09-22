@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MDCSelect } from '@material/select';
 
-import { uuid } from './helpers';
+import { uuid } from '../helpers';
 
 import Text from '../Text';
 
