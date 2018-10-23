@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MDCRipple } from '@material/ripple';
+import { MDCRipple } from '@material/ripple/dist';
 
 import { uuid } from '../helpers';
 

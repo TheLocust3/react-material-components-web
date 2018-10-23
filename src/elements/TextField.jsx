@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MDCTextField } from '@material/textfield';
+import { MDCTextField } from '@material/textfield/dist';
 
 import { uuid } from '../helpers';
 
