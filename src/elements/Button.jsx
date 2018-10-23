@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MDCRipple } from '@material/ripple/dist';
+import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
 
 import { uuid } from '../helpers';
 

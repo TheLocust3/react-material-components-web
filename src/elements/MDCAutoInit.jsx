@@ -1,9 +1,9 @@
 import React from 'react';
-import mdcAutoInit from '@material/auto-init/dist';
-import { MDCRipple } from '@material/ripple/dist';
-import { MDCTextField } from '@material/textfield/dist';
-import { MDCCheckbox } from '@material/checkbox/dist';
-import { MDCSelect } from '@material/select/dist';
+import mdcAutoInit from '@material/auto-init/dist/mdc.autoInit';
+import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
+import { MDCTextField } from '@material/textfield/dist/mdc.textfield';
+import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox';
+import { MDCSelect } from '@material/select/dist/mdc.select';
 
 class MDCAutoInit extends React.Component {
     autoInit() {

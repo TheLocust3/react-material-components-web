@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MDCSelect } from '@material/select/dist';
+import { MDCSelect } from '@material/select/dist/mdc.select';
 
 import { uuid } from '../helpers';
 
