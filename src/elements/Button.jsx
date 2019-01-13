@@ -18,7 +18,7 @@ export default class Button extends React.Component {
   }
 
   render() {
-    let { className, style, flat, condensed, children, ...props } = this.props;
+    let { className, style, flat, condensed, children, noRipple, ...props } = this.props;
 
     className = _.isEmpty(className) ? '' : className;
     let buttonDenseClassName = condensed ? 'mdc-button--dense' : '';
