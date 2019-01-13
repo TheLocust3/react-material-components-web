@@ -5,34 +5,40 @@ import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
 import { uuid } from '../helpers';
 
 export default class Button extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = { uuid: `button-${uuid()}` };
+    this.state = { uuid: `button-${uuid()}` };
+  }
+
+  componentDidMount() {
+    if (!this.props.noRipple) {
+      MDCRipple.attachTo(document.querySelector(`#${this.state.uuid}`));
     }
+  }
 
-    componentDidMount() {
-        MDCRipple.attachTo(document.querySelector(`#${this.state.uuid}`));
-    }
+  render() {
+    let { className, style, flat, condensed, children, ...props } = this.props;
 
-    render() {
-        let { className, style, flat, condensed, children, ...props } = this.props;
+    className = _.isEmpty(className) ? '' : className;
+    let buttonDenseClassName = condensed ? 'mdc-button--dense' : '';
+    let flatClassName = flat ? '' : 'mdc-button--raised';
 
-        className = _.isEmpty(className) ? '' : className;
-        let buttonDenseClassName = condensed ? 'mdc-button--dense' : '';
-        let flatClassName = flat ? '' : 'mdc-button--raised';
-
-        return (
-            <button id={this.state.uuid} className={`mdc-button ${flatClassName} ${buttonDenseClassName} ${className}`} {...props}>
-                {children}
-            </button>
-        );
-    }
+    return (
+      <button
+        id={this.state.uuid}
+        className={`mdc-button ${flatClassName} ${buttonDenseClassName} ${className}`}
+        {...props}>
+        {children}
+      </button>
+    );
+  }
 }
 
 Button.propTypes = {
-    className: PropTypes.string,
-    flat: PropTypes.bool,
-    condensed: PropTypes.bool,
-    children: PropTypes.any.isRequired
+  className: PropTypes.string,
+  flat: PropTypes.bool,
+  condensed: PropTypes.bool,
+  children: PropTypes.any.isRequired,
+  noRipple: PropTypes.bool
 };

@@ -6,31 +6,31 @@ import { MDCCheckbox } from '@material/checkbox/dist/mdc.checkbox';
 import { MDCSelect } from '@material/select/dist/mdc.select';
 
 class MDCAutoInit extends React.Component {
-    autoInit() {
-        mdcAutoInit.deregisterAll();
+  autoInit() {
+    mdcAutoInit.deregisterAll();
 
-        mdcAutoInit.register('MDCRipple', MDCRipple);
-        mdcAutoInit.register('MDCTextField', MDCTextField);
-        mdcAutoInit.register('MDCCheckbox', MDCCheckbox);
-        mdcAutoInit.register('MDCSelect', MDCSelect);
-        mdcAutoInit(document, () => {
-            /* no messages */
-        });
-    }
+    mdcAutoInit.register('MDCRipple', MDCRipple);
+    mdcAutoInit.register('MDCTextField', MDCTextField);
+    mdcAutoInit.register('MDCCheckbox', MDCCheckbox);
+    mdcAutoInit.register('MDCSelect', MDCSelect);
+    mdcAutoInit(document, () => {
+      /* no messages */
+    });
+  }
 
-    componentDidMount() {
-        this.autoInit();
-    }
+  componentDidMount() {
+    this.autoInit();
+  }
 
-    componentDidUpdate() {
-        this.autoInit();
-    }
+  componentDidUpdate() {
+    this.autoInit();
+  }
 
-    render() {
-        this.autoInit();
+  render() {
+    this.autoInit();
 
-        return null;
-    }
+    return null;
+  }
 }
 
 export default MDCAutoInit;

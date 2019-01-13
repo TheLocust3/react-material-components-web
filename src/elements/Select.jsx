@@ -8,60 +8,74 @@ import { uuid } from '../helpers';
 import Text from './Text';
 
 export default class Select extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = { uuid: `select-${uuid()}` };
+    this.state = { uuid: `select-${uuid()}` };
+  }
+
+  mdcInit() {
+    const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
+
+    if (this.props.selectedIndex != null) {
+      select.selectedIndex = this.props.selectedIndex;
     }
+  }
 
-    mdcInit() {
-        const select = new MDCSelect(document.querySelector(`#${this.state.uuid}`));
+  componentDidMount() {
+    this.mdcInit();
+  }
 
-        if (this.props.selectedIndex != null) {
-            select.selectedIndex = this.props.selectedIndex;
-        }
-    }
+  componentDidUpdate() {
+    this.mdcInit();
+  }
 
-    componentDidMount() {
-        this.mdcInit();
-    }
+  render() {
+    let {
+      className,
+      label,
+      onChange,
+      selectedIndex,
+      required,
+      disabled,
+      children,
+      ...props
+    } = this.props;
+    className = _.isEmpty(className) ? '' : className;
 
-    componentDidUpdate() {
-        this.mdcInit();
-    }
+    return (
+      <div
+        className={`mdc-select ${className}`}
+        id={this.state.uuid}
+        role="listbox"
+        data-mdc-auto-init="MDCSelect"
+        {...props}>
+        <select
+          onChange={(event) => {
+            this.props.onChange(event.target);
+          }}
+          className="mdc-select__native-control mdc-typography--body2"
+          required={required}
+          disabled={disabled}>
+          {children}
+        </select>
 
-    render() {
-        let { className, label, onChange, selectedIndex, required, disabled, children, ...props } = this.props;
-        className = _.isEmpty(className) ? '' : className;
+        <label className="mdc-floating-label">
+          <Text type="body2">{label}</Text>
+        </label>
 
-        return (
-            <div className={`mdc-select ${className}`} id={this.state.uuid} role="listbox" data-mdc-auto-init="MDCSelect" {...props}>
-                <select
-                    onChange={(event) => {
-                        this.props.onChange(event.target);
-                    }}
-                    className="mdc-select__native-control mdc-typography--body2"
-                    required={required}
-                    disabled={disabled}>
-                    {children}
-                </select>
-
-                <label className="mdc-floating-label">
-                    <Text type="body2">{label}</Text>
-                </label>
-
-                <div className="mdc-line-ripple" />
-            </div>
-        );
-    }
+        <div className="mdc-line-ripple" />
+      </div>
+    );
+  }
 }
 
 Select.propTypes = {
-    className: PropTypes.string,
-    label: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-    selectedIndex: PropTypes.number,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    children: PropTypes.any.isRequired
+  className: PropTypes.string,
+  label: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  selectedIndex: PropTypes.number,
+  required: PropTypes.bool,
+  disabled: PropTypes.bool,
+  children: PropTypes.any.isRequired
 };
