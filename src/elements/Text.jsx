@@ -12,7 +12,7 @@ class Text extends React.Component {
     if (span) {
       return (
         <span className={`mdc-typography mdc-typography--${type} ${outerClassName}`} {...props}>
-          <div className={className}>{children}</div>
+          <span className={className}>{children}</span>
         </span>
       );
     }
